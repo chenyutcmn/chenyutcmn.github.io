@@ -1,3 +1,9 @@
+---
+title: cuda安装
+date: 2019-04-10 10:42:36
+categories: note
+tags: cuda
+---
 nvidia驱动与cuda安装
 <!--more-->
 ### 安装过程
