@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content>
+  <meta name="author" content="知白">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="2019.3.3竞赛总结">
+  <meta property="og:description" content>
+  <meta property="og:site_name" content="知白">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yoursite.com">
+  
+    <link rel="alternate" href="/atom.xml" title="知白" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>知白</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/my_wife.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">2019.3.3竞赛总结</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/chenyutcmn">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By 知白</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2019-03-07</span>
+            <span class="time">15:26:11</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/note/">note</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/思路总结/">#思路总结</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>竞赛当中学习到的思路总结<br><a id="more"></a></p>
+<h3 id="collections总结"><a href="#collections总结" class="headerlink" title="collections总结"></a>collections总结</h3><p>This module implements specialized container datatypes providing alternatives to Python’s general purpose built-in containers, dict, list, set, and tuple. </p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th></th>
+<th>函数描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>namedtuple</td>
+<td></td>
+<td>factory function for creating tuple subclasses with named fields</td>
+</tr>
+<tr>
+<td>deque</td>
+<td></td>
+<td>list-like container with fast appends and pops on either end</td>
+</tr>
+<tr>
+<td>ChainMap</td>
+<td></td>
+<td>dict-like class for creating a single view of multiple mappings</td>
+</tr>
+<tr>
+<td>Counter</td>
+<td></td>
+<td>dict subclass for counting hashable objects</td>
+</tr>
+<tr>
+<td>OrderedDict</td>
+<td></td>
+<td>dict subclass that remembers the order entries were added</td>
+</tr>
+<tr>
+<td>defaultdict</td>
+<td></td>
+<td>dict subclass that calls a factory function to supply missing values</td>
+</tr>
+<tr>
+<td>UserDict</td>
+<td></td>
+<td>wrapper around dictionary objects for easier dict subclassing</td>
+</tr>
+<tr>
+<td>UserList</td>
+<td></td>
+<td>wrapper around list objects for easier list subclassing</td>
+</tr>
+<tr>
+<td>UserString</td>
+<td></td>
+<td>wrapper around string objects for easier string subclassing</td>
+</tr>
+</tbody>
+</table>
+<h3 id="滑动窗口思想"><a href="#滑动窗口思想" class="headerlink" title="滑动窗口思想"></a>滑动窗口思想</h3><p>有两个指针构成一个区间，通过往同一个方向不停的移动，来找到满足条件的区间。 </p>
+<p>滑动窗口关键的是想想初始时候，两个指针在哪，在滑动的时候，两个指针基于什么条件移动，移动后的位置又在哪里。</p>
+<h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><p>dp算法需满足以下性质</p>
+<ol>
+<li><p>最优子结构性质。如果问题的最优解所包含的子问题的解也是最优的，我们就称该问题具有最优子结构性质（即满足最优化原理）。最优子结构性质为动态规划算法解决问题提供了重要线索。  </p>
+</li>
+<li><p>子问题重叠性质。子问题重叠性质是指在用递归算法自顶向下对问题进行求解时，每次产生的子问题并不总是新问题，有些子问题会被重复计算多次。动态规划算法正是利用了这种子问题的重叠性质，对每一个子问题只计算一次，然后将其计算结果保存在一个表格中，当再次需要计算已经计算过的子问题时，只是在表格中简单地查看一下结果，从而获得较高的解题效率。 </p>
+</li>
+</ol>
+<p>当我们已经确定待解决的问题需要用动态规划算法求解时，通常可以按照以下步骤设计动态规划算法:</p>
+<ol>
+<li><p>分析问题的最优解，找出最优解的性质，并刻画其结构特征 </p>
+</li>
+<li><p>递归地定义最优值 </p>
+</li>
+<li><p>采用自底向上的方式计算问题的最优值 </p>
+</li>
+<li><p>根据计算最优值时得到的信息，构造最优解 </p>
+</li>
+</ol>
+<p>在python中可通过<a href="mailto:`@functools.lr" target="_blank" rel="noopener">`@functools.lr</a>u_cache(None)`实现重复计算直接取值</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

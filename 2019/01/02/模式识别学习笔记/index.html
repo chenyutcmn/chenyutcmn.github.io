@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content>
+  <meta name="author" content="知白">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="国科大模式识别学习笔记">
+  <meta property="og:description" content>
+  <meta property="og:site_name" content="知白">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yoursite.com">
+  
+    <link rel="alternate" href="/atom.xml" title="知白" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>知白</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/my_wife.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">国科大模式识别学习笔记</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/chenyutcmn">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By 知白</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2019-01-02</span>
+            <span class="time">15:26:11</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/note/">note</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/模式识别/">#模式识别</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>国科大模式识别课程学习笔记<br><a id="more"></a></p>
+<hr>
+<h2 id="统计判别"><a href="#统计判别" class="headerlink" title="统计判别"></a>统计判别</h2><h4 id="贝叶斯判别"><a href="#贝叶斯判别" class="headerlink" title="贝叶斯判别"></a>贝叶斯判别</h4><p><img src="http://ww1.sinaimg.cn/large/007xDx5ily1fyud01rcx5j308v02yq2q.jpg" alt="贝叶斯判别公式"> </p>
+<p>需要的条件为两类模式的概率，X在两类模式下的分布。 </p>
+<p>当考虑到对于某一类的错误判决要比对另一类的判决更为关键时，就需要把最小错误概率的贝叶斯判别做一些修正，提出条件平均风险。在以上公式基础上进行加权求和。 </p>
+<p>在多类情况下，最小平均风险的判别式为 </p>
+<p><img src="http://ww1.sinaimg.cn/large/007xDx5ily1fyud01qqxdj307d016jr5.jpg" alt="贝叶斯最小平均风险判别式"> </p>
+<hr>
+<h4 id="例：M种多变量正态类密度模式的分类"><a href="#例：M种多变量正态类密度模式的分类" class="headerlink" title="例：M种多变量正态类密度模式的分类"></a>例：M种多变量正态类密度模式的分类</h4><p>具有M种模式类别的多变量正态类密度函数为： </p>
+<p><img src="http://ww1.sinaimg.cn/large/007xDx5ily1fyud01qtsgj30ee01t743.jpg" alt="正态分布下的概率密度函数"> </p>
+<p>已知类别ωi的判别函数可写成如下形式： </p>
+<p><img src="http://ww1.sinaimg.cn/large/007xDx5ily1fyud01qqxdj307d016jr5.jpg" alt="贝叶斯判别公式"></p>
+<p>假设有两类模式，则判别界面为d1-d2.(多类情况下对应情况3，可得出该类的判别界面)。</p>
+<hr>
+<h4 id="均值向量和协方差矩阵的参数估计"><a href="#均值向量和协方差矩阵的参数估计" class="headerlink" title="均值向量和协方差矩阵的参数估计"></a>均值向量和协方差矩阵的参数估计</h4><p>现有一正态分布，设θ是其均值，即带估计参数，目标是迭代求θ的概率密度函数。即已知 </p>
+<p><img src="http://ww1.sinaimg.cn/large/007xDx5ily1fyud01qg43j307f02udfm.jpg" alt="参数估计中的概率密度函数形式"> </p>
+<p>并给出N个训练样本{x1, x2,…, xN}，用贝叶斯学习计算其均值估计量。具体迭代公式略。<br>当使用贝叶斯判别时，只是用样本来计算各模式的概率有失偏颇。这时，若有一个先验估计θ作为样本均值的估计，则可以通过加权和的方式与样本均值一起得出样本整体的概率分布。</p>
+<hr>
+<hr>
+<h2 id="判别函数"><a href="#判别函数" class="headerlink" title="判别函数"></a>判别函数</h2><p>上一章讲，通过统计来获得判别界面。这种方式需要知道两类模式各自出现的概率，和两类样本的概率密度函数。这一章，讲直接通过样本来计算判别界面，依赖变少。</p>
+<h4 id="线性判别函数"><a href="#线性判别函数" class="headerlink" title="线性判别函数"></a>线性判别函数</h4><p>两类情况略，多类情况分为以下三种 </p>
+<ol>
+<li>即把M类多类问题分成M个两类问题，因此共有M个判别函数。</li>
+<li>采用每对划分，即ωi/ωj两分法，此时一个判别界面只能分开两种类别，但不能把它与其余所有的界面分开。</li>
+<li>这是没有不确定区域的ωi/ωj两分法。该分类的特点是把M类情况分成M-1个两类问题。（对应贝叶斯判别界面的确定）</li>
+</ol>
+<hr>
+<h4 id="非线性判别函数"><a href="#非线性判别函数" class="headerlink" title="非线性判别函数"></a>非线性判别函数</h4><p>分两种方式</p>
+<ol>
+<li>特征变换，是广义的线性判别，略。</li>
+<li>分段线性判别逼近非线性判别。 </li>
+</ol>
+<hr>
+<h4 id="Fisher线性判别"><a href="#Fisher线性判别" class="headerlink" title="Fisher线性判别"></a>Fisher线性判别</h4><p>将n维特征向量投影至一维，目标函数为： </p>
+<p><img src="http://ww1.sinaimg.cn/large/007xDx5ily1fyud01rb7fj303301m0sh.jpg" alt="Loss function"></p>
+<p>分子分母分别与类间散度矩阵，样本总类内散度矩阵有关。 </p>
+<p>对J求导,令分母等于非零常数，即 </p>
+<p><img src="http://ww1.sinaimg.cn/large/007xDx5ily1fyud01sbawj302u00x0je.jpg" alt="推倒过程"></p>
+<p>定义Lagrange函数为：</p>
+<p><img src="http://ww1.sinaimg.cn/large/007xDx5ily1fyud01sipkj30690113y9.jpg" alt="拉格朗日函数"></p>
+<p>将上式对w求偏导数，经过一系列推倒可得：</p>
+<p><img src="http://ww1.sinaimg.cn/large/007xDx5ily1fyud01ti8mj303l0150oc.jpg" alt="最优解"></p>
+<p>这种算法将所有样本输入来得到分类器，计算复杂度高。</p>
+<hr>
+<h4 id="感知器算法"><a href="#感知器算法" class="headerlink" title="感知器算法"></a>感知器算法</h4><p>感知器算法就是通过训练样本模式的 <strong>迭代</strong> 和学习，产生线性（或广义线性）可分的模式判别函数。<strong>不需要对各类别中模式的统计性质做任何假设</strong>，因此称为确定性的方法。</p>
+<hr>
+<h4 id="可训练的确定性分类器的迭代算法"><a href="#可训练的确定性分类器的迭代算法" class="headerlink" title="可训练的确定性分类器的迭代算法"></a>可训练的确定性分类器的迭代算法</h4><p>这里我们将引入更广泛意义上的迭代算法。 </p>
+<p>在感知器算法中，判别界面的迭代根据样本来选取，但这样的迭代并不是速度最快的，这时，我们引入准则函数J(w,x)，根据他的梯度来迭代权向量w。 </p>
+<p>设取准则函数为：</p>
+<p><img src="https://ws1.sinaimg.cn/large/007xDx5ily1fyvh56iquvj305001w741.jpg" alt="准则函数"></p>
+<p>那么梯度法将退化成感知算法 </p>
+<p>感知器算法只是当被分模式可用一个特定的判别界面分开时才收敛，在不可分情况下，只要计算程序不终止，它就始终不收敛。<br>即使在模式可分的情况下，也很难事先算出达到收敛时所需要的迭代次数。 </p>
+<p>最小平方误差(LMSE)算法，除了对可分模式是收敛的以外，对于类别不可分的情况也能指出来。定义准则函数：</p>
+<p><img src="https://ws1.sinaimg.cn/large/007xDx5ily1fyvh7w2z6uj30cf01gdfm.jpg" alt="LMSE准则函数"></p>
+<p>根据迭代算法可判断是否可分，考试不考，具体细节略。 </p>
+<hr>
+<h4 id="势函数法-一种确定性的非线性分类方法"><a href="#势函数法-一种确定性的非线性分类方法" class="headerlink" title="势函数法 一种确定性的非线性分类方法"></a>势函数法 一种确定性的非线性分类方法</h4><p>在训练状态，模式样本逐个输入分类器，分类器就连续计算相应的势函数，在第k步迭代时的积累位势决定于在该步前所有的单独势函数的累加。 </p>
+<p>一般来说，若两个n维向量x和xk的函数K(x, xk)同时满足下列三个条件，则可作为势函数。</p>
+<ul>
+<li>K(x, xk)=K(xk, x)，并且当且仅当x=xk时达到最大值；</li>
+<li>当向量x与xk的距离趋于无穷时，K(x, xk)趋于零；</li>
+<li>K(x, xk)是光滑函数，且是x与xk之间距离的单调下降函数。</li>
+</ul>
+<p>第一类势函数：可用对称的有限多项式展开，即：</p>
+<p><img src="https://ws1.sinaimg.cn/mw690/007xDx5ily1fyvhdxsnxaj304s01d741.jpg" alt="势函数法升维公式"></p>
+<p>这种方法可以看成是升维的一种方式。在作业题中，因为原问题线性不可分，现有两种方式升维，一种将2维映射至4维，选取H0和H2，一种将2维映射至9维（未校验，可能实际不需要这么多），选取H0，H1，H2。第一种方式，将w1中的两个点映射为了一个点，w2同理，以实现线性可分，私以为不可取。  </p>
+<p>第二类势函数：选择双变量x和xk的对称函数作为势函数，即K(x, xk) = K(xk, x)，并且它可展开成无穷级数，例如：</p>
+<p><img src="https://ws1.sinaimg.cn/mw690/007xDx5ily1fyvhjeye3lj303p01d0qf.jpg" alt="第二类势函数法"></p>
+<p><strong>可能</strong>为一种曲线划分方式，理解存疑。</p>
+<hr>
+<h4 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h4><p>利用树分类器可以把一个复杂的多类别分类问题，转化为若干个简单的分类问题来解决，采用分级的形式，使分类问题逐步得到解决。 </p>
+<p>二叉树结构分类器概念简单、直观、便于解释，而且在各个节点上可以选择不同的特征和采用不同的决策规则，因此设计方法灵活多样，便于利用先验知识来获得一个较好的分类器。<br>在设计一个决策树时，主要应解决以下几个问题：</p>
+<ul>
+<li>选择一个合适的树结构，即合理安排树的节点和分支；</li>
+<li>确定在每个非终止节点上要使用的特征；</li>
+<li>在每个非终止节点上选择合适的决策规则</li>
+</ul>
+<hr>
+<hr>
+<h2 id="特征选择和特征提取"><a href="#特征选择和特征提取" class="headerlink" title="特征选择和特征提取"></a>特征选择和特征提取</h2><h4 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h4><p>假若类概率密度函数不是或不近似正态分布，均值和方差就不足以用来估计类别的可分性，此时该准则函数不完全适用。<br>离散K-L变换</p>
+<h4 id="离散K-L变换"><a href="#离散K-L变换" class="headerlink" title="离散K-L变换"></a>离散K-L变换</h4><p>将原来的特征做正交变换，获得的每个数据都是原来n个数据的线性组合，然后从新的数据中选出少数几个，使其尽可能多地反映各类模式之间的差异，而这些特征间又尽可能相互独立。</p>
+<p>K-L展开式用于特征选择相当于一种线性变换。<br>若从n个特征向量中取出m个组成变换矩阵Φ，即</p>
+<p><img src="https://ws1.sinaimg.cn/mw690/007xDx5ily1fyvhpopk2ij30430150nt.jpg" alt="特征选择"></p>
+<p>此时，Φ是一个n*m维矩阵，x是n维向量，经过ΦTx变换，即得到降维为m的新向量。</p>
+<p>若采用较大特征值对应的特征向量组成变换矩阵，则能对应地保留原模式中方差最大的特征成分，所以K-L变换起到了减小相关性、突出差异性的效果。在此情况下， K-L变换也称为主成分变换（PCA变换）。</p>
+<hr>
+<hr>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>以上内容具有内在联系，试想，在多个模式空间所有样本均已知，即已知该模式下的样本概率密度函数，每个模式的概率也已知，这时，用贝叶斯分类即可判别任意样本的类别。 </p>
+<p>但这是不现实的，我们只能得到样本集的采样数据，这时我们可以通过求已知样本的概率密度函数，来拟合整体样本集的概率密度，并估计各模式的先验概率，来进行贝叶斯判别。</p>
+<p>这时，通过对P(θ|X)的计算，可以得到Di和判别界面即f(x)(三种模式划分方式)。以fisher判别为例，可以将判别函数看成是将n维特征映射到了1维(y)来进行简单的划分。但fisher判别的缺点是需要一次性计算所有样本，这时，便引出了感知器算法来进行迭代求解。</p>
+<p>再对感知器算法进一步深入，便可得到可训练的确定性分类器的迭代算法。</p>
+<hr>
+<hr>
+<h2 id="统计机器学习基础"><a href="#统计机器学习基础" class="headerlink" title="统计机器学习基础"></a>统计机器学习基础</h2><p>Statistical modeling is a formalization of relationships between variables in the data in the form of mathematical equations. </p>
+<p>统计建模是以数学方程的形式对数据中变量之间的关系进行形式化的。 </p>
+<p>也就是说，通过数学语言描述样本集的内在联系，去近似实际样本的整体分布。 </p>
+<p>本章主要描述一种在训练集和测试集间的平衡。即模型在训练集上的拟合程度，和在实际中的泛化性的平衡。若模型在训练集上拟合程度高，代表模型的偏差小，参数复杂，但此时实际上的拟合程度差，代表模型的方差大，出现过拟合。 </p>
+<p><img src="https://ws1.sinaimg.cn/mw690/007xDx5ily1fyvi259q98j30lv04374k.jpg" alt="特征选择"></p>
+<p>上面的式子中，第一行代表模型预测值与真实值的偏离程度，第二行的第一项代表着预测值与样本集上能达到的最优值的偏离，第二项代表样本最优与实际真实值的偏离。其中，第二项是由于样本集的选取造成的，是因为样本集抽样方式不当，或抽样时伴随误差。 </p>
+<p>看回第一项</p>
+<p><img src="https://ws1.sinaimg.cn/mw690/007xDx5ily1fyvi7fg308j30it03u0t1.jpg" alt></p>
+<p>可以看到，第一项又可以分为多次模型的均值与最优值之间的偏离和模型本身的方差。将其称之为偏差与方差。</p>
+<p><img src="https://ws1.sinaimg.cn/large/007xDx5ily1fyvibgjbw1j30ka0av75c.jpg" alt></p>
+<p>如图，图一的偏差最大，方差最小，代表模型的复杂度低；图三的偏差小，方差大，代表模型复杂度高。要像图二一样取得一个平衡。</p>
+<p>那么，我们引出正则项来控制模型的复杂程度。公式略。</p>
+<p>常用的正则有L1正则和L2正则，如图</p>
+<p><img src="https://ws1.sinaimg.cn/large/007xDx5ily1fyvifbd2pej30gl0a3mxl.jpg" alt></p>
+<p>L2正则取欧式距离最小，而L1正则则会取部分权重为0。特点在于L1正则起到了一个特征选择的作用。</p>
+<hr>
+<hr>
+<h2 id="有监督学习方法"><a href="#有监督学习方法" class="headerlink" title="有监督学习方法"></a>有监督学习方法</h2><p><strong>本章讲解方法的概率上的解释</strong></p>
+<h4 id="Probabilistic-Explanation-极大化似然函数-MLE"><a href="#Probabilistic-Explanation-极大化似然函数-MLE" class="headerlink" title="Probabilistic Explanation: 极大化似然函数 MLE"></a>Probabilistic Explanation: 极大化似然函数 MLE</h4><p>以线性回归为例，现有样本集N，求一线性函数拟合数据点，即求参数向量W。定义准则函数：<br><img src="https://ws1.sinaimg.cn/large/007xDx5ily1fyw3ozqkajj309902k3yf.jpg" alt><br>对J求梯度，迭代计算即可。 </p>
+<p>这里，我们来解释为什么选取该准则函数。在<strong>估计的W</strong>下，有似然函数<br><img src="https://ws1.sinaimg.cn/large/007xDx5ily1fyw3sg93g6j30el02ht8o.jpg" alt><br>我们的预测值WT*X与真实值之间是有差距的，这里我们假设真实值y与服从以预测值为均值的正态分布，那么，在参数为W的情况下，由样本X得到其真实值y的概率为<br><img src="https://ws1.sinaimg.cn/large/007xDx5ily1fyw3yhlpumj30do02omx4.jpg" alt><br>对L(W)取对数，有<br><img src="https://ws1.sinaimg.cn/large/007xDx5ily1fyw40ugho4j30hr071wey.jpg" alt></p>
+<p>可以看出，极大化似然函数等价于<br><img src="https://ws1.sinaimg.cn/large/007xDx5ily1fyw42uepxvj306p02uwed.jpg" alt></p>
+<p>一些概率上的解释见<a href="https://zhuanlan.zhihu.com/p/42598338" target="_blank" rel="noopener">似然和似然函数详解</a></p>
+<hr>
+<h4 id="极大化后验概率-MAP"><a href="#极大化后验概率-MAP" class="headerlink" title="极大化后验概率 MAP"></a>极大化后验概率 MAP</h4><p>思路同上，具体见下图<br><img src="https://ws1.sinaimg.cn/large/007xDx5ily1fyw4cyd270j30ve0eyju4.jpg" alt></p>
+<p>两者区别见下图<br><img src="https://ws1.sinaimg.cn/large/007xDx5ily1fyw4m4cp57j30uh0fkdj3.jpg" alt></p>
+<p>极大化后验概率相当于极大化似然函数加先验</p>
+<hr>
+<h4 id="生成模型-vs-判别模型"><a href="#生成模型-vs-判别模型" class="headerlink" title="生成模型 vs 判别模型"></a>生成模型 vs 判别模型</h4><ul>
+<li><p>生成模型是对P(x|y)建模然后通过贝叶斯公式去估计P(y|x),判别式模型是直接对后验概率P(y|x)建模。</p>
+</li>
+<li><p>生成式模型因为要对模式的概率密度函数建模，所以模型要更加复杂。而判别式模型相对简单。</p>
+</li>
+<li><p>生成式模型对模式的概率是有先验估计的，所以用可以用更少的的数据达到更好的效果。</p>
+</li>
+<li><p>对模式的先验估计出错的情况下，生成式模型将得到相对更加错误的结果。</p>
+</li>
+</ul>
+<h4 id="两类模型的一些例子"><a href="#两类模型的一些例子" class="headerlink" title="两类模型的一些例子"></a>两类模型的一些例子</h4><p>以后写(hhhhh)</p>
+<p>##SVM</p>
+<p>是对感知机模型的改进，得到最大化间隔分类超平面。这一段的证明与KKT条件有关，了解最优化原理对理解下面的推倒很有帮助</p>
+<p>现在考虑已经得到判别函数，则判别规则为</p>
+<p><img src="https://ws1.sinaimg.cn/large/007xDx5ily1fz2wdo5ddlj30bh02j747.jpg" alt></p>
+<p>也即 </p>
+<p><img src="https://ws1.sinaimg.cn/large/007xDx5ily1fz2wesv584j306b01xglg.jpg" alt></p>
+<p>那么我们现在的优化目标是最大化最小间隔。现假设得到最小间隔的样本x经过计算得到输出γ，即目标是最大化γ。 </p>
+<p>至于为什么使用几何间隔，是因为γ的值与w向量的长度有关，在训练过程中他的值会随w的变换而变化，必须做归一化处理，此时得到下面的优化问题</p>
+<p><img src="https://ws1.sinaimg.cn/large/007xDx5ily1fz2xhhsppgj30i305iq34.jpg" alt></p>
+<p>这一步，我们同时将w引入了目标函数，继续转换得（下面为最小化w的二模）</p>
+<p><img src="https://ws1.sinaimg.cn/large/007xDx5ily1fz2xum9yguj30hp0520sv.jpg" alt></p>
+<p>引入拉格朗日乘子</p>
+<p><img src="https://ws1.sinaimg.cn/large/007xDx5ily1fz2z5s4e9aj30k707d0tb.jpg" alt></p>
+<p>求导</p>
+<p><img src="https://ws1.sinaimg.cn/large/007xDx5ily1fz2z75cesqj309t04p3yl.jpg" alt></p>
+<p>将其代回上式，得 </p>
+<p><img src="https://ws1.sinaimg.cn/large/007xDx5ily1fz2zee1308j30gv04nwel.jpg" alt></p>
+<p>那么原问题就转化为了对偶问题</p>
+<p><img src="https://ws1.sinaimg.cn/large/007xDx5ily1fz2zfpp7e4j30g104ljrn.jpg" alt></p>
+<p>此时问题规模仅与样本集大小有关(对应于原问题中与样本纬度有关)，利于核方法的应用。</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

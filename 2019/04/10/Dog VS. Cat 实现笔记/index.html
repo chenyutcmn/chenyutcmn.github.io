@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content>
+  <meta name="author" content="知白">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="dog VS. cat 的实现">
+  <meta property="og:description" content>
+  <meta property="og:site_name" content="知白">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yoursite.com">
+  
+    <link rel="alternate" href="/atom.xml" title="知白" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>知白</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/my_wife.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">dog VS. cat 的实现</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/chenyutcmn">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By 知白</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2019-04-10</span>
+            <span class="time">15:26:11</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/note/">note</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/pytorch/">#pytorch</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>一些在实现Dog VS. Cat项目中踩过的坑<br><a id="more"></a></p>
+<h3 id="程序主题步骤"><a href="#程序主题步骤" class="headerlink" title="程序主题步骤"></a>程序主题步骤</h3><ol>
+<li>获取数据集 需实现DogCat类，使用dataloader来获取batch，获取时进行预处理</li>
+<li>设置优化器，设置损失函数</li>
+<li>模型设置训练模式，输入以得到输出，计算Loss，回传，优化器优化</li>
+</ol>
+<hr>
+<h3 id="显存不够用"><a href="#显存不够用" class="headerlink" title="显存不够用"></a>显存不够用</h3><p>加钱</p>
+<p>但是我没有。。。。。艹</p>
+<hr>
+<h3 id="Cannot-allocate-memory"><a href="#Cannot-allocate-memory" class="headerlink" title="Cannot allocate memory"></a>Cannot allocate memory</h3><p>重启可解决，未发现原因</p>
+<hr>
+<h3 id="argparse"><a href="#argparse" class="headerlink" title="argparse"></a>argparse</h3><p>argparse.ArgumentParser()可替代配置文件 add_argument()方法添加参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add_argument(&apos;--num_workers&apos;,type=int,default=2)</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="lr-scheduler-StepLR"><a href="#lr-scheduler-StepLR" class="headerlink" title="lr_scheduler.StepLR()"></a>lr_scheduler.StepLR()</h3><p>用于设置学习率按轮次降低，例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">scheduler = StepLR(optimizer, step_size=30, gamma=0.1)</span><br><span class="line">for epoch in range(100):</span><br><span class="line">    scheduler.step()</span><br><span class="line">    train(...)</span><br><span class="line">    validate(...)</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="不支持求导"><a href="#不支持求导" class="headerlink" title="不支持求导"></a>不支持求导</h3><p>因为某些神秘原因，需要手动设置需要求导</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

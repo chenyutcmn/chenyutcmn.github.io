@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content>
+  <meta name="author" content="知白">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="国科大计算机视觉课程学习笔记">
+  <meta property="og:description" content>
+  <meta property="og:site_name" content="知白">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yoursite.com">
+  
+    <link rel="alternate" href="/atom.xml" title="知白" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>知白</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/my_wife.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">国科大计算机视觉课程学习笔记</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/chenyutcmn">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By 知白</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2019-03-10</span>
+            <span class="time">15:26:11</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/note/">note</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/cv/">#cv</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>对计算机视觉课程的学习笔记<br><a id="more"></a></p>
+<hr>
+<h2 id="特征提取"><a href="#特征提取" class="headerlink" title="特征提取"></a>特征提取</h2><h3 id="一阶微分算子提取边缘"><a href="#一阶微分算子提取边缘" class="headerlink" title="一阶微分算子提取边缘"></a>一阶微分算子提取边缘</h3><p>用x和y方向上的两个算子分别对图像卷积，在得到的两幅图像的对应位置求平方和后开方</p>
+<h3 id="二阶微分算子提取边缘"><a href="#二阶微分算子提取边缘" class="headerlink" title="二阶微分算子提取边缘"></a>二阶微分算子提取边缘</h3><p>先用高斯核进行平滑滤波，再使用拉普拉斯算子进行卷积操作，再对得到的图像进行二值化处理，形态学膨胀方法检测边缘</p>
+<h3 id="Canny边缘检测器"><a href="#Canny边缘检测器" class="headerlink" title="Canny边缘检测器"></a>Canny边缘检测器</h3><p>边缘检测最优原则 </p>
+<ol>
+<li>对边缘的响应大于对噪声的响应 -&gt; Good detection</li>
+<li>其最大值应接近边缘的实际位置 -&gt; Good localization</li>
+<li>在边缘附近只有一个极值点 -&gt; Low false positives</li>
+</ol>
+<p>算法步骤</p>
+<ol>
+<li>高斯滤波过的一阶微分算子求图像梯度(包括x，y方向)</li>
+<li>得到梯度幅值图像和方向角矩阵<br><img src="https://ws1.sinaimg.cn/large/007xDx5ily1g0y2g1qtqgj30ek04hjrp.jpg" alt></li>
+<li>非极大值抑制 在每个点的梯度方向上，只保留极大值</li>
+<li>使用两个阈值K1，K2分别对图像进行二值化 K1 &gt;&gt; K2 ,这样K1的处理结果就包含在K2的结果之中。由K1得到的边缘更加可靠，但是边缘点数目少。由K2得到的边缘点更多，但是其中不是边缘的点也更多</li>
+<li>边缘链接<ul>
+<li>将K1(x,y)中相连的边缘点输出为一幅边缘图像E(x,y)</li>
+<li>对于E(x,y)中每条边，从端点出发在K2(x,y)中寻找其延长的部分，直至与E(x,y)中另外一条边的端点相连，否则认为E1(x,y)中没有它延长的部分</li>
+<li>将E(x,y)作为结果输出</li>
+</ul>
+</li>
+</ol>
+<p>双阈值的选择(LOW=HIGH*0.4)</p>
+<h2 id="分割"><a href="#分割" class="headerlink" title="分割"></a>分割</h2><h3 id="基于“均值移动”的图象分割方法"><a href="#基于“均值移动”的图象分割方法" class="headerlink" title="基于“均值移动”的图象分割方法"></a>基于“均值移动”的图象分割方法</h3><p>此方法类似于K均值聚类，对每一个像素点进行聚类判断其属于哪一类别<br>细节待补充</p>
+<h3 id="Graph-Cut"><a href="#Graph-Cut" class="headerlink" title="Graph Cut"></a>Graph Cut</h3><ol>
+<li>将图像用图的方式表示，顶点表示像素，边表示像素之间的关系。图像分割对应图的割集。</li>
+<li>确定图中边的权值，使图像分割目标（能量最小化）对应图的最小割。</li>
+<li>用最大流算法求解最小割问题</li>
+</ol>
+<h4 id="Normalized-cut"><a href="#Normalized-cut" class="headerlink" title="Normalized cut"></a>Normalized cut</h4><p>为了解决孤立点问题引入了归一化割，公式如下<br><img src="https://ws1.sinaimg.cn/large/007xDx5ily1g1a8tlqi16j30gj02ndg2.jpg" alt><br>V代表整个点集。这样孤立点的损失将会很大。<br>通常判断一个聚类的好坏，除了类间距离要尽可能大，类内距离也要尽可能小。通过公式变换(略)可得上述两者是等价的。所以得到最优划分等价于求解最小割。<br><img src="https://ws1.sinaimg.cn/large/007xDx5ily1g1a93njwdfj30h503ajrg.jpg" alt><br>上式即为图的邻接矩阵赋权公式，权值大小与颜色差异，像素距离有关<br>求解过程复杂，此处略</p>
+<h4 id="用graph-cut求解能量极小化问题"><a href="#用graph-cut求解能量极小化问题" class="headerlink" title="用graph cut求解能量极小化问题"></a>用graph cut求解能量极小化问题</h4><p>即求解最优标记问题。构造N个虚拟节点代表N类标记，问题等价与图像与N个虚拟节点的最小割问题</p>
+<h3 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h3><ol>
+<li>一阶微分中，水平微分检测的是竖直边缘，竖直微分检测的是水平微分</li>
+</ol>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
