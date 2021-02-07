@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2021-02-06</span>
-            <span class="time">15:53:39</span>
+            <span class="time">16:06:47</span>
           </span>
           
           <!--  Categories  -->
@@ -122,8 +122,7 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <a id="more"></a>
-<p>从NICE, Real NVP, Glow到BETR_Flow</p>
+          <p>从NICE, Real NVP, Glow到BETR_Flow<br><a id="more"></a></p>
 <h2 id="BERT-Flow-总结"><a href="#BERT-Flow-总结" class="headerlink" title="BERT-Flow 总结"></a>BERT-Flow 总结</h2><h3 id="motivation"><a href="#motivation" class="headerlink" title="motivation"></a>motivation</h3><p>BERT已在各大任务中有良好表现，然而在句子表示学习相关的问题中(如文本相似度)仍表现欠佳，甚至不如一些较为简单的模型(如Glove)。</p>
 <p>本文认为，这是由embedding space的各项异性导致的，及句向量在空间中分布不均。</p>
 <p>提取句向量有两种方式，一种是使用所有词向量的平均，一种是使用cls token。实验表明，使用平均的方式效果更好。这可以理解为句向量是由所有词向量融合而成的。然而，词是有词频的，有的词出现的频率高，有的频率低。<br>这造成word embedding space的分布是不均匀。平均之后的句向量可能落在word embedding space中undefined的区域，破坏了空间的凸集性质。</p>
