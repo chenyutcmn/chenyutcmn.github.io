@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2018-07-03</span>
-            <span class="time">15:26:11</span>
+            <span class="time">15:50:18</span>
           </span>
           
           <!--  Categories  -->
@@ -130,7 +130,7 @@
 <li>根据之前帧与当前帧训练一个相关滤波器，也就是求滤波器参数，是一个岭回归问题</li>
 <li>加余弦窗的作用？ 因为傅里叶变换是周期性的，变换之后在图像的上下左右边缘会出现噪声 </li>
 </ol>
-<h2 id="整体思路"><a href="#整体思路" class="headerlink" title="整体思路"></a>整体思路</h2><p>如上文所述<br><img src="https://ws1.sinaimg.cn/large/007xDx5ily1g19j42yjccj305v02sa9v.jpg" alt><br>到这一步时，其实滤波器已经得到了。但是注意，这里的x并不是一个二维矩阵，而是由二维图像组成的一维向量。<br>从头说起，我们对原始目标框进行循环位移后得到了M*N个样本，如图(这里是3*3)<br><img src="https://ws1.sinaimg.cn/large/007xDx5ily1g19j9rszbhj304n05iabd.jpg" alt><br>这副图片有误导效果，不应排列成3*3的形式，其实它应当看成是1*(M*N)的一维向量，此一维向量再去组成2D循环矩阵。<br>所以上面公式中的x可以看成是一个高维特征，那么，此时引入核方法。<br><img src="https://ws1.sinaimg.cn/large/007xDx5ily1g19jgkhcxtj3041036gle.jpg" alt><br>在傅里叶域的形式<br><img src="https://ws1.sinaimg.cn/large/007xDx5ily1g19jhy3e1sj302p01c0me.jpg" alt><br>在时域中的K是上面所说“由二维图像组成的一维向量”的核相关矩阵，变换到频域后，Kxx帽也就是K矩阵的第一行，也就是“一维向量第一个元素与各个元素的相关性”。而原始循环矩阵的第一行是由原始目标框循环位移得来，变换到频率域后，因为傅里叶变换的周期性，可以看成是原始目标框在频率域的自相关。注意此时得到的Kxx帽是一个一维M*N(样本数量)项的向量 </p>
+<h2 id="整体思路"><a href="#整体思路" class="headerlink" title="整体思路"></a>整体思路</h2><p>如上文所述<br><img src="https://ws1.sinaimg.cn/large/007xDx5ily1g19j42yjccj305v02sa9v.jpg" alt><br>到这一步时，其实滤波器已经得到了。但是注意，这里的x并不是一个二维矩阵，而是由二维图像组成的一维向量。<br>从头说起，我们对原始目标框进行循环位移后得到了M*N个样本，如图(这里是3*3)<br><img src="https://ws1.sinaimg.cn/large/007xDx5ily1g19j9rszbhj304n05iabd.jpg" alt><br>这副图片有误导效果，不应排列成3*3的形式，其实它应当看成是1*(M*N)的一维向量，此一维向量再去组成2D循环矩阵。<br>所以上面公式中的x可以看成是一个高维特征，那么，此时引入核方法。<br><img src="https://ws1.sinaimg.cn/large/007xDx5ily1g19jgkhcxtj3041036gle.jpg" alt><br>在傅里叶域的形式<br><img src="https://ws1.sinaimg.cn/large/007xDx5ily1g19jhy3e1sj302p01c0me.jpg" alt><br>在时域中的K是上面所说“由二维图像组成的一维向量”的核相关矩阵，变换到频域后，Kxx_hat也就是K矩阵的第一行，也就是“一维向量第一个元素与各个元素的相关性”。而原始循环矩阵的第一行是由原始目标框循环位移得来，变换到频率域后，因为傅里叶变换的周期性，可以看成是原始目标框在频率域的自相关。注意此时得到的Kxx帽是一个一维M*N(样本数量)项的向量 </p>
 <p>历时9个月，因为上课时老师提起卷积与相关，才猛然惊觉已将KCF算法忘的差不多了，回头再看，当时学的懵懵懂懂，现在看来也是一头雾水。索性这半年多没有荒废，知乎，博客，原论文互相印证终于将原理搞懂。写到此处，才真正对KCF算法思考通透，有两点感悟，一是对文献的阅读能力有待提高，二是以前你以为很厉害的人会在你进步的途中变得没有那么厉害，不宜妄自菲薄。</p>
 <h3 id="学如逆水行舟-且行且记"><a href="#学如逆水行舟-且行且记" class="headerlink" title="学如逆水行舟,且行且记"></a>学如逆水行舟,且行且记</h3>
         </div>

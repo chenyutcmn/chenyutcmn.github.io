@@ -8,7 +8,7 @@
   <meta name="description" content>
   <meta name="author" content="知白">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="kaggle digit_recognize总结">
+  <meta property="og:title" content="CenterNet训练与阅读笔记">
   <meta property="og:description" content>
   <meta property="og:site_name" content="知白">
   <meta property="og:type" content="article">
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">kaggle digit_recognize总结</p>
+          <p class="title">CenterNet训练与阅读笔记</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -99,7 +99,7 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2019-04-12</span>
+            <span class="date">2021-01-16</span>
             <span class="time">15:50:18</span>
           </span>
           
@@ -115,53 +115,26 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/pytorch/">#pytorch</a> <a class="tag" href="/tags/sklearn/">#sklearn</a>
+<a class="tag" href="/tags/CenterNet/">#CenterNet</a>
 
 
           </div>
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>对kaggle digit_recognized项目的总结<br><a id="more"></a></p>
-<h3 id="方案一：Random-Forest"><a href="#方案一：Random-Forest" class="headerlink" title="方案一：Random Forest"></a>方案一：Random Forest</h3><p>当时学的时候没认真听，趁这个机会搞一下 为我的勤奋 (゜-゜)つロ 干杯</p>
-<ol>
-<li>是一种在原始样本的基础上进行重采样(成为自举)，得到新的样本集，并用此样本集训练多个分类器，已多个分类器的结果进行加权得到最终结果的算法。</li>
-<li><p>关于Bootstrap(自举)：对给定有 N 个样本的数据集D进行Bootstrap采样,得到D_i ,在D_i上训练模型f_i 。上述过程重复M次,得到M个模型</p>
-<p> 采样时进行有放回的抽取，一般抽取次数与原始样本数相同，得到一个样本D_i。</p>
-</li>
-<li>可以证明:Bagging可以降低模型的方差,但是不能降低模型的偏差</li>
-<li>整体模型方差的降低程度与单个模型之间的相关性有关</li>
-<li>由于只是训练数据有一些不同,对决策树算法进行Bagging得到的多棵树高度相关,因此带来的方差减少有限。</li>
-<li><p>随机森林通过 </p>
-<ol>
-<li>随机选择一部分特征 </li>
-<li><p>随机选择一部分样本</p>
-<p>降低树的相关性。随机森林在很多应用案例上被证明有效,但牺牲了可解释性</p>
-</li>
+          <p>CenterNet训练与阅读笔记<br><a id="more"></a></p>
+<h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><ol>
+<li>在src/lib/datasets/dataset下新建example.py，文件名同数据集名</li>
+<li>复制coco.py文件，修改类名，num_classes，数据集均值方差</li>
+<li>25行修改为split == val</li>
+<li>将数据集加入src/lib/datasets/dataset_factory</li>
+<li>修改/src/lib/opts.py，包括修改’–dataset’参数的默认值，修改ctdet任务的默认数据集</li>
+<li>修改src/lib/utils/debugger.py文件，45行左右添加自己数据集，460行左右添加自己的数据类别<h2 id="源码阅读"><a href="#源码阅读" class="headerlink" title="源码阅读"></a>源码阅读</h2></li>
 </ol>
-</li>
-<li><p>#某种神秘力量导致预测阶段速度奇慢</p>
-<p> 经调查发现是因为把矩阵分行输入了，摔，垃圾博客害人</p>
-</li>
-<li>未调参情况下得分0.96371</li>
+<h2 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h2><ol>
+<li>新建_init_import.py文件，在需要使用import的文件中 import _init_import 避免了每个文件都写sys.path.insert(0, path)</li>
 </ol>
-<hr>
-<h3 id="方案二：Boosting"><a href="#方案二：Boosting" class="headerlink" title="方案二：Boosting"></a>方案二：Boosting</h3><ol>
-<li>round1 得分0.96371 貌似过拟合了，是时候轮到我 调参侠 出场了！</li>
-<li>round2 得分0.95242 看来没有过拟合，增大学习轮次试试</li>
-<li>round3 得分0.96371 摔，不调了</li>
-</ol>
-<hr>
-<h3 id="方案三：MLP"><a href="#方案三：MLP" class="headerlink" title="方案三：MLP"></a>方案三：MLP</h3><ol>
-<li>在240轮左右loss突然升至1.3，是它，没错！神秘力量又出现了！</li>
-<li>round1 得分0.94428 瞌睡了，告辞 (๑•̀ㅂ•́)و✧</li>
-</ol>
-<hr>
-<h3 id="日记"><a href="#日记" class="headerlink" title="日记"></a>日记</h3><h4 id="day1"><a href="#day1" class="headerlink" title="day1"></a>day1</h4><p>迷茫，不知道该干什么的时候，天上射下一道光。学习，他在向我招手。</p>
-<p>亲爱的，我来了 …(*￣０￣)ノ[爱你]</p>
-<h4 id="day2"><a href="#day2" class="headerlink" title="day2"></a>day2</h4><p>跑了一晚，今早起来发现结果保存出错了。哭哭惹(ノへ￣、)</p>
-<p>我们无法一起学习真色，不是，真甜(/▽＼)</p>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import os.path as osp</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">def add_path(path):</span><br><span class="line">    if path not in sys.path:</span><br><span class="line">        sys.path.insert(0, path)</span><br><span class="line"></span><br><span class="line">this_dir = osp.dirname(__file__)</span><br><span class="line"></span><br><span class="line"># Add lib to PYTHONPATH</span><br><span class="line">lib_path = osp.join(this_dir, &apos;lib&apos;)</span><br><span class="line">add_path(lib_path)</span><br></pre></td></tr></table></figure>
         </div>
       </div>
     </div>

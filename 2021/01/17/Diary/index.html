@@ -8,7 +8,7 @@
   <meta name="description" content>
   <meta name="author" content="知白">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="kaggle digit_recognize总结">
+  <meta property="og:title" content="Diary">
   <meta property="og:description" content>
   <meta property="og:site_name" content="知白">
   <meta property="og:type" content="article">
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">kaggle digit_recognize总结</p>
+          <p class="title">Diary</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -99,14 +99,14 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2019-04-12</span>
+            <span class="date">2021-01-17</span>
             <span class="time">15:50:18</span>
           </span>
           
           <!--  Categories  -->
             <span class="categories info">Under 
 
-<a href="/categories/note/">note</a>
+<a href="/categories/Diary/">Diary</a>
 </span>
           
         </div>
@@ -115,52 +115,20 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/pytorch/">#pytorch</a> <a class="tag" href="/tags/sklearn/">#sklearn</a>
+<a class="tag" href="/tags/Diary/">#Diary</a>
 
 
           </div>
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>对kaggle digit_recognized项目的总结<br><a id="more"></a></p>
-<h3 id="方案一：Random-Forest"><a href="#方案一：Random-Forest" class="headerlink" title="方案一：Random Forest"></a>方案一：Random Forest</h3><p>当时学的时候没认真听，趁这个机会搞一下 为我的勤奋 (゜-゜)つロ 干杯</p>
-<ol>
-<li>是一种在原始样本的基础上进行重采样(成为自举)，得到新的样本集，并用此样本集训练多个分类器，已多个分类器的结果进行加权得到最终结果的算法。</li>
-<li><p>关于Bootstrap(自举)：对给定有 N 个样本的数据集D进行Bootstrap采样,得到D_i ,在D_i上训练模型f_i 。上述过程重复M次,得到M个模型</p>
-<p> 采样时进行有放回的抽取，一般抽取次数与原始样本数相同，得到一个样本D_i。</p>
-</li>
-<li>可以证明:Bagging可以降低模型的方差,但是不能降低模型的偏差</li>
-<li>整体模型方差的降低程度与单个模型之间的相关性有关</li>
-<li>由于只是训练数据有一些不同,对决策树算法进行Bagging得到的多棵树高度相关,因此带来的方差减少有限。</li>
-<li><p>随机森林通过 </p>
-<ol>
-<li>随机选择一部分特征 </li>
-<li><p>随机选择一部分样本</p>
-<p>降低树的相关性。随机森林在很多应用案例上被证明有效,但牺牲了可解释性</p>
-</li>
-</ol>
-</li>
-<li><p>#某种神秘力量导致预测阶段速度奇慢</p>
-<p> 经调查发现是因为把矩阵分行输入了，摔，垃圾博客害人</p>
-</li>
-<li>未调参情况下得分0.96371</li>
-</ol>
-<hr>
-<h3 id="方案二：Boosting"><a href="#方案二：Boosting" class="headerlink" title="方案二：Boosting"></a>方案二：Boosting</h3><ol>
-<li>round1 得分0.96371 貌似过拟合了，是时候轮到我 调参侠 出场了！</li>
-<li>round2 得分0.95242 看来没有过拟合，增大学习轮次试试</li>
-<li>round3 得分0.96371 摔，不调了</li>
-</ol>
-<hr>
-<h3 id="方案三：MLP"><a href="#方案三：MLP" class="headerlink" title="方案三：MLP"></a>方案三：MLP</h3><ol>
-<li>在240轮左右loss突然升至1.3，是它，没错！神秘力量又出现了！</li>
-<li>round1 得分0.94428 瞌睡了，告辞 (๑•̀ㅂ•́)و✧</li>
-</ol>
-<hr>
-<h3 id="日记"><a href="#日记" class="headerlink" title="日记"></a>日记</h3><h4 id="day1"><a href="#day1" class="headerlink" title="day1"></a>day1</h4><p>迷茫，不知道该干什么的时候，天上射下一道光。学习，他在向我招手。</p>
-<p>亲爱的，我来了 …(*￣０￣)ノ[爱你]</p>
-<h4 id="day2"><a href="#day2" class="headerlink" title="day2"></a>day2</h4><p>跑了一晚，今早起来发现结果保存出错了。哭哭惹(ノへ￣、)</p>
-<p>我们无法一起学习真色，不是，真甜(/▽＼)</p>
+          <a id="more"></a>
+<p>It’s a diary</p>
+<h3 id="2021-01-16"><a href="#2021-01-16" class="headerlink" title="2021/01/16"></a>2021/01/16</h3><p>it’s not task, it’s life</p>
+<h3 id="2021-01-17"><a href="#2021-01-17" class="headerlink" title="2021/01/17"></a>2021/01/17</h3><p>Do my best</p>
+<h3 id="2021-01-28"><a href="#2021-01-28" class="headerlink" title="2021/01/28"></a>2021/01/28</h3><p>La vida sola vivirás</p>
+<h3 id="2021-02-06"><a href="#2021-02-06" class="headerlink" title="2021/02/06"></a>2021/02/06</h3><p>学习了流式生成模型，大致搞懂了思路，细节就留给明天把。明天的自己，加油! </p>
+<h3 id="2021-02-07"><a href="#2021-02-07" class="headerlink" title="2021/02/07"></a>2021/02/07</h3><p>新しい何かが始まる时，消えたくなっちゃうのかな  –生きていたんだよな</p>
 
         </div>
       </div>

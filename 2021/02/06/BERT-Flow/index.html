@@ -8,7 +8,7 @@
   <meta name="description" content>
   <meta name="author" content="知白">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="kaggle digit_recognize总结">
+  <meta property="og:title" content="BERT_Flow">
   <meta property="og:description" content>
   <meta property="og:site_name" content="知白">
   <meta property="og:type" content="article">
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">kaggle digit_recognize总结</p>
+          <p class="title">BERT_Flow</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -99,14 +99,14 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2019-04-12</span>
+            <span class="date">2021-02-06</span>
             <span class="time">15:50:18</span>
           </span>
           
           <!--  Categories  -->
             <span class="categories info">Under 
 
-<a href="/categories/note/">note</a>
+<a href="/categories/paper-summary/">paper summary</a>
 </span>
           
         </div>
@@ -115,53 +115,31 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/pytorch/">#pytorch</a> <a class="tag" href="/tags/sklearn/">#sklearn</a>
+<a class="tag" href="/tags/BERT-flow/">#BERT-flow</a>
 
 
           </div>
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>对kaggle digit_recognized项目的总结<br><a id="more"></a></p>
-<h3 id="方案一：Random-Forest"><a href="#方案一：Random-Forest" class="headerlink" title="方案一：Random Forest"></a>方案一：Random Forest</h3><p>当时学的时候没认真听，趁这个机会搞一下 为我的勤奋 (゜-゜)つロ 干杯</p>
-<ol>
-<li>是一种在原始样本的基础上进行重采样(成为自举)，得到新的样本集，并用此样本集训练多个分类器，已多个分类器的结果进行加权得到最终结果的算法。</li>
-<li><p>关于Bootstrap(自举)：对给定有 N 个样本的数据集D进行Bootstrap采样,得到D_i ,在D_i上训练模型f_i 。上述过程重复M次,得到M个模型</p>
-<p> 采样时进行有放回的抽取，一般抽取次数与原始样本数相同，得到一个样本D_i。</p>
-</li>
-<li>可以证明:Bagging可以降低模型的方差,但是不能降低模型的偏差</li>
-<li>整体模型方差的降低程度与单个模型之间的相关性有关</li>
-<li>由于只是训练数据有一些不同,对决策树算法进行Bagging得到的多棵树高度相关,因此带来的方差减少有限。</li>
-<li><p>随机森林通过 </p>
-<ol>
-<li>随机选择一部分特征 </li>
-<li><p>随机选择一部分样本</p>
-<p>降低树的相关性。随机森林在很多应用案例上被证明有效,但牺牲了可解释性</p>
-</li>
-</ol>
-</li>
-<li><p>#某种神秘力量导致预测阶段速度奇慢</p>
-<p> 经调查发现是因为把矩阵分行输入了，摔，垃圾博客害人</p>
-</li>
-<li>未调参情况下得分0.96371</li>
-</ol>
-<hr>
-<h3 id="方案二：Boosting"><a href="#方案二：Boosting" class="headerlink" title="方案二：Boosting"></a>方案二：Boosting</h3><ol>
-<li>round1 得分0.96371 貌似过拟合了，是时候轮到我 调参侠 出场了！</li>
-<li>round2 得分0.95242 看来没有过拟合，增大学习轮次试试</li>
-<li>round3 得分0.96371 摔，不调了</li>
-</ol>
-<hr>
-<h3 id="方案三：MLP"><a href="#方案三：MLP" class="headerlink" title="方案三：MLP"></a>方案三：MLP</h3><ol>
-<li>在240轮左右loss突然升至1.3，是它，没错！神秘力量又出现了！</li>
-<li>round1 得分0.94428 瞌睡了，告辞 (๑•̀ㅂ•́)و✧</li>
-</ol>
-<hr>
-<h3 id="日记"><a href="#日记" class="headerlink" title="日记"></a>日记</h3><h4 id="day1"><a href="#day1" class="headerlink" title="day1"></a>day1</h4><p>迷茫，不知道该干什么的时候，天上射下一道光。学习，他在向我招手。</p>
-<p>亲爱的，我来了 …(*￣０￣)ノ[爱你]</p>
-<h4 id="day2"><a href="#day2" class="headerlink" title="day2"></a>day2</h4><p>跑了一晚，今早起来发现结果保存出错了。哭哭惹(ノへ￣、)</p>
-<p>我们无法一起学习真色，不是，真甜(/▽＼)</p>
-
+          <a id="more"></a>
+<p>从NICE, Real NVP, Glow到BETR_Flow</p>
+<h2 id="BERT-Flow-总结"><a href="#BERT-Flow-总结" class="headerlink" title="BERT-Flow 总结"></a>BERT-Flow 总结</h2><h3 id="motivation"><a href="#motivation" class="headerlink" title="motivation"></a>motivation</h3><p>BERT已在各大任务中有良好表现，然而在句子表示学习相关的问题中(如文本相似度)仍表现欠佳，甚至不如一些较为简单的模型(如Glove)。</p>
+<p>本文认为，这是由embedding space的各项异性导致的，及句向量在空间中分布不均。</p>
+<p>提取句向量有两种方式，一种是使用所有词向量的平均，一种是使用cls token。实验表明，使用平均的方式效果更好。这可以理解为句向量是由所有词向量融合而成的。然而，词是有词频的，有的词出现的频率高，有的频率低。<br>这造成word embedding space的分布是不均匀。平均之后的句向量可能落在word embedding space中undefined的区域，破坏了空间的凸集性质。</p>
+<p>若以上假设成立，那么将句向量映射至高斯分布，即可缓解问题。</p>
+<h3 id="流式模型"><a href="#流式模型" class="headerlink" title="流式模型"></a>流式模型</h3><p>流式模型是作为一个生成模型被提出的。可参考VAE，GAN网络，即通过一个已知的分布，拟合一个未知分布，公式如下</p>
+<p><img src="http://ww1.sinaimg.cn/large/ed603485ly1gnez6274e2j209o03kmxv.jpg" alt="2021020701.PNG"></p>
+<p>这里 q(z) 一般是标准的高斯分布，而 qθ(x|z)=qθ(x|z) 可以选择任意的条件高斯分布或者狄拉克分布。这样的积分形式可以形成很多复杂的分布。理论上来讲，它能拟合任意分布。</p>
+<p>在参数 θ 下，x满足分布q(x)，为了求出参数 θ ，可以通过极大化目标求解，这里假设真实数据分布为 p̃(x)</p>
+<p><img src="http://ww1.sinaimg.cn/large/ed603485ly1gnezh5havtj208b02waai.jpg" alt="2021020702.PNG"></p>
+<p>这里的积分形式难以求解。但是x可以由z通过一系列可逆变换(仿射变换)得来，也就是说我们也可以有x得到z，z的分布又是已知的，那么我们可以建立z的分布与x的分布之间的联系。</p>
+<p>z在prior分布上的概率密度好算, 那怎么计算每个仿射变换前后概率的变化量呢?</p>
+<p><img src="http://ww1.sinaimg.cn/large/ed603485ly1gnezpzs9gyj20oy0n142j.jpg" alt="2021020705.PNG"></p>
+<p><img src="http://ww1.sinaimg.cn/large/ed603485ly1gnezqvr7t7j20oq0sjq8c.jpg" alt="2021020706.PNG"></p>
+<p><img src="http://ww1.sinaimg.cn/large/ed603485ly1gnezrg6zl1j20gf09gmxo.jpg" alt="2021020707.PNG"></p>
+<p>以上为流式模型原理，在NICE, Real NVP, Glow还有复杂的细节未看透彻，留待之后研究</p>
+<h2 id="todo：NICE-Real-NVP-Glow的演进"><a href="#todo：NICE-Real-NVP-Glow的演进" class="headerlink" title="todo：NICE, Real NVP, Glow的演进"></a>todo：NICE, Real NVP, Glow的演进</h2>
         </div>
       </div>
     </div>
